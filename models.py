@@ -26,8 +26,8 @@ class Profile(ndb.Model):
     displayName = ndb.StringProperty()
     mainEmail = ndb.StringProperty()
     teeShirtSize = ndb.StringProperty(default='NOT_SPECIFIED')
-    conferenceKeysToAttend = ndb.StringProperty(repeated=True)
-    sessionKeysToAttend = ndb.StringProperty(repeated=True)
+    conferenceKeysToAttend = ndb.KeyProperty(repeated=True)
+    sessionKeysToAttend = ndb.KeyProperty(repeated=True)
 
 class ProfileMiniForm(messages.Message):
     """ProfileMiniForm -- update Profile form message"""
@@ -116,23 +116,23 @@ class Session(ndb.Model):
     """Session -- Session object"""
     name            = ndb.StringProperty(required=True)
     highlights      = ndb.StringProperty()
-    speakerId       = ndb.StringProperty(repeated=True)
+    speakerEmail    = ndb.StringProperty()
     duration        = ndb.IntegerProperty()
     typeOfSession   = ndb.StringProperty()
     date            = ndb.DateProperty()
     startTime       = ndb.TimeProperty()
-    conferenceId    = ndb.StringProperty()
 
 class SessionForm(messages.Message):
     """SessionForm -- Session outbound form message"""
-    name           = messages.StringField(1)
-    highlights     = messages.StringField(2)
-    speakerId      = messages.StringField(3, repeated=True)
-    duration       = messages.IntegerField(4)
-    typeOfSession  = messages.StringField(5)
-    date           = messages.StringField(6) #DateTimeField()
-    startTime      = messages.StringField(7) #DateTimeField()
-    conferenceId   = messages.StringField(8)
+    name                   = messages.StringField(1)
+    highlights             = messages.StringField(2)
+    speakerEmail           = messages.StringField(3)
+    duration               = messages.IntegerField(4)
+    typeOfSession          = messages.StringField(5)
+    date                   = messages.StringField(6) #DateTimeField()
+    startTime              = messages.StringField(7) #DateTimeField()
+    conferenceWebSafeKey   = messages.StringField(8)
+    sessionWebSafeKey      = messages.StringField(9)
 
 class SessionForms(messages.Message):
     """SessionForms -- multiple Session outbound form message"""
@@ -147,7 +147,7 @@ class SessionQueryForm(messages.Message):
 class Speaker(ndb.Model):
     """Speaker -- Speaker object"""
     displayName    = ndb.StringProperty(required=True)
-    email          = ndb.StringProperty()
+    email          = ndb.StringProperty(required=True)
     areasOfStudy   = ndb.StringProperty(repeated=True)
     webpage        = ndb.StringProperty()
     sessionKeysToAttend = ndb.StringProperty(repeated=True)

@@ -33,6 +33,7 @@ Task 1: Add Sessions to a Conference
     Sessions can contain multiple Speakers identified by their email. 
     The 'startTime' is a DateTime field and must be addressed in the format HH:MM in 24hr UTC format.
     The 'typeOfSession' is a string field that can contain any kind of text. In the future could be replaced with a ENUM type of field.
+    Beside that it also have 'name', 'highlights', 'duration' and 'date'.
    
    * Speaker is defined as a pure entity with 'name', 'email', 'areasOfStudy' and 'webpage' fields.
     I've choosed to use the 'email' as identifier because make it easier to shearch for a specific user, just using is email (easier to remind)

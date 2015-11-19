@@ -1,4 +1,4 @@
-Conference Central  Version 1.1  11/10/2015
+Conference Central  Version 1.2  11/19/2015
 
 Requirements
 ------------
@@ -49,7 +49,7 @@ Task 3: Work on indexes and queries
    * I've implemented 3 new queries:
     1. getMorningSessions() - returns all the sessions that starts between 8am and 1pm
     2. getShortWorkshopSessions() - return all the sessions of type 'Workshop' where the duration is less than 30 minutes
-    3. query problem - Datastore only permits a single inequality per query, and by default this needs two (!=workshop and >= 19:00). One possible solution is to break this into two querys: first filtering the session by time and then remove the keys of all with the undesired type, then finally querying and returning the sessions from the remaining keys. This is implemented in filteredSession().
+    3. query problem - Datastore does not permit inequality filters on more than one field., and by default this needs two (typeOfSession and startTime). One possible solution is to break this into two querys: first filtering the session by time and then remove the keys of all with the undesired type, then finally querying and returning the sessions from the remaining keys. This is implemented in filteredSession().
 
 
 Task 4: Add a Task

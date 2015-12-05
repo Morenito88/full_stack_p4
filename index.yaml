@@ -97,5 +97,10 @@ indexes:
 
 - kind: Session
   properties:
+  - name: speakerEmail
+  - name: name
+
+- kind: Session
+  properties:
   - name: typeOfSession
   - name: duration

@@ -41,11 +41,12 @@ class CheckFeaturedSpeakerHandler(webapp2.RequestHandler):
     def post(self):
         """Add featured speaker to Memcache."""
         ConferenceApi._checkFeaturedSpeaker(
-            self.request.get('websafeConfKey'),
-            self.request.get('speakerSessions'))
+            self.request.get('speakerEmail'),
+            self.request.get('speakerName'))
         self.response.set_status(204)
 
 app = webapp2.WSGIApplication([
     ('/crons/set_announcement', SetAnnouncementHandler),
     ('/tasks/send_confirmation_email', SendConfirmationEmailHandler),
+    ('/tasks/check_featured_speaker', CheckFeaturedSpeakerHandler),
 ], debug=True)
